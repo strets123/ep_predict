@@ -16,6 +16,7 @@ jobs:
         run: |
           pip install --no-deps git+https://github.com/jeslago/epftoolbox@master#egg=epftoolbox
           pip install -r requirements.txt
+          echo "" > /opt/hostedtoolcache/Python/3.10.7/x64/lib/python3.10/site-packages/epftoolbox/models/__init__.py
           python -m ep_predict
       # - name: setup git config
       #   run: |
