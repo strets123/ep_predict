@@ -55,7 +55,7 @@ def output_json(df_record, name):
     times = [f"{str(n).zfill(2)}:00" for n in range(24)]
     output = {"date": df_record["Date"], "values": [df_record[f"h{n}"] for n in range(24)], "labels": times}
     with open(f"website/{name}.json", "w") as f:
-        json.dump(output)
+        json.dump(output, f)
 
 
 def main():
@@ -65,8 +65,8 @@ def main():
         "octopus_agile_se_england", prediction_date
     )
 
-    output_json(predictions[0], "hours_list_tomorrow")
-    output_json(predictions[1], "day_after_tomorrow")
+    output_json(predictions.iloc[:1], "hours_list_tomorrow")
+    output_json(predictions.iloc[-1:], "day_after_tomorrow")
 
 if __name__ == "__main__":
     main()
