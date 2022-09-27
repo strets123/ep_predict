@@ -1,0 +1,22 @@
+name: Deploy GitHub Pages to external repository
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+       
+      - name: Install
+        run: |
+          pip install --no-deps git+https://github.com/jeslago/epftoolbox@master#egg=epftoolbox
+          pip install --no-deps git+https://github.com/jeslago/epftoolbox@master#egg=epftoolbox
+          python -m ep_predict
+      # - name: setup git config
+      #   run: |
+      #     git config user.name "GitHub Actions Bot"
+      #     git config user.email "<>"
+      # - <make changes and commit >
+      # - run: git push origin master
