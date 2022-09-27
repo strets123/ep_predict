@@ -1,4 +1,5 @@
 import datetime
+import json
 import os
 import shutil
 import ep_predict
@@ -50,15 +51,22 @@ def fetch_data_and_make_prediction():
     return only_2020_onwards
 
 
+def output_json(df_record, name):
+    times = [f"{str(n).zfill(2)}:00" for n in range(24)]
+    output = {"date": df_record["Date"], "values": [df_record[f"h{n}"] for n in range(24)], "labels": times}
+    with open(f"website/{name}.json", "w") as f:
+        json.dump(output)
+
+
 def main():
     df = fetch_data_and_make_prediction()
     prediction_date = datetime.datetime.now() + datetime.timedelta(days=1)
     predictions = ep_predict.prices_predict.run(
         "octopus_agile_se_england", prediction_date
     )
-    
-    print(predictions)
 
+    output_json(predictions[0], "hours_list_tomorrow")
+    output_json(predictions[1], "day_after_tomorrow")
 
 if __name__ == "__main__":
     main()
