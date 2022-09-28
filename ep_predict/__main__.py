@@ -93,7 +93,7 @@ def output_json(df_record, name):
     vega = {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
         "description": "A simple bar chart with embedded data.",
-        "title": f"Predicted Electricty Prices for {name} ({df_record['index']})",
+        "title": f"Predicted Electricty Prices for {name} ({pd.to_datetime(str(df_record['Date'])).strftime('%b %d %Y')})",
         "data": {
             "values": times
         },
@@ -101,7 +101,7 @@ def output_json(df_record, name):
         "height": 300,
         "mark": "bar",
         "encoding": {
-            "x": {"field": "Time", "type": "nominal", "axis": {"labelAngle": 0}},
+            "x": {"field": "Time", "type": "nominal", "axis": {"labelAngle": 90}},
             "y": {"field": "Predicted Price", "type": "quantitative"}
         }
     }
@@ -114,7 +114,7 @@ def main():
     predictions = ep_predict.prices_predict.run(
         "octopus_agile_se_england", prediction_date
     )
-    predictions = predictions.resex_index()
+    predictions = predictions.reset_index()
     records = predictions.to_records(index=False)
     tomorrow = output_json(records[0], "Today")
     day_after_tomorrow = output_json(records[1], "Tomorrow")
