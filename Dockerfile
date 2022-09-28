@@ -9,4 +9,5 @@ WORKDIR /app
 # Stop us importing tensorflow as not used
 RUN echo "" > /usr/local/lib/python3.10/site-packages/epftoolbox/models/__init__.py
 COPY ep_predict /app/ep_predict
+RUN mkdir website
 RUN python -m ep_predict
