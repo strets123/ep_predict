@@ -5,7 +5,7 @@ import shutil
 import ep_predict
 import pandas as pd
 
-HTML = open("template.html")
+HTML = open("ep_predict/template.html").read()
 
 
 def from_unixtime(unixtime):
