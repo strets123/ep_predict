@@ -34,11 +34,6 @@ jobs:
           pip install -r requirements.txt
           echo "" > /opt/hostedtoolcache/Python/3.10.7/x64/lib/python3.10/site-packages/epftoolbox/models/__init__.py
           python -m ep_predict
-      - name: Write back
-        run: |
-          git checkout -b actions-bot
-          git add website
-          git commit -m "Add artifacts"
-          git push origin actions-bot
+
       
 

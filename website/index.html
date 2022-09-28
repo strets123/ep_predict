@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Predictions for electricity prices.</title>
+    <meta charset="utf-8" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+
+    <style media="screen">
+      /* Add space between Vega-Embed links  */
+      .vega-actions a {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1></h1>
+    <!-- Container for the visualization -->
+    <div id="vis1"></div>
+    <div id="vis2"></div>
+    <script>
+      // Assign the specification to a local variable vlSpec.
+      var vlSpec1 = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "description": "A simple bar chart with embedded data.", "title": "Predicted Electricty Prices for Today", "data": {"values": [{"Time": "00:00", "Predicted Price": 14.315526654711682}, {"Time": "01:00", "Predicted Price": 14.302929566257365}, {"Time": "02:00", "Predicted Price": 14.308030247408844}, {"Time": "03:00", "Predicted Price": 14.477013284486079}, {"Time": "04:00", "Predicted Price": 15.577237652675944}, {"Time": "05:00", "Predicted Price": 19.802577635058164}, {"Time": "06:00", "Predicted Price": 21.13326205065529}, {"Time": "07:00", "Predicted Price": 24.885132704919965}, {"Time": "08:00", "Predicted Price": 22.84279489552752}, {"Time": "09:00", "Predicted Price": 19.296827651978553}, {"Time": "10:00", "Predicted Price": 17.278299815823907}, {"Time": "11:00", "Predicted Price": 17.720703471353318}, {"Time": "12:00", "Predicted Price": 17.197346803151916}, {"Time": "13:00", "Predicted Price": 16.197772166931315}, {"Time": "14:00", "Predicted Price": 16.48526610081099}, {"Time": "15:00", "Predicted Price": 26.858108109357016}, {"Time": "16:00", "Predicted Price": 30.60260965441542}, {"Time": "17:00", "Predicted Price": 36.932112514262016}, {"Time": "18:00", "Predicted Price": 27.89082609870861}, {"Time": "19:00", "Predicted Price": 23.892203702181508}, {"Time": "20:00", "Predicted Price": 22.412395732665907}, {"Time": "21:00", "Predicted Price": 18.754044660375815}, {"Time": "22:00", "Predicted Price": 18.82889904188805}, {"Time": "23:00", "Predicted Price": 17.13214369538766}]}, "mark": "bar", "encoding": {"x": {"field": "Time", "type": "nominal", "axis": {"labelAngle": 0}}, "y": {"field": "Predicted Price", "type": "quantitative"}}};
+      var vlSpec2 = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "description": "A simple bar chart with embedded data.", "title": "Predicted Electricty Prices for Tomorrow", "data": {"values": [{"Time": "00:00", "Predicted Price": 14.00446303759337}, {"Time": "01:00", "Predicted Price": 14.141428909558089}, {"Time": "02:00", "Predicted Price": 13.61095067846178}, {"Time": "03:00", "Predicted Price": 13.341894563802311}, {"Time": "04:00", "Predicted Price": 13.966823494776516}, {"Time": "05:00", "Predicted Price": 17.6212884311776}, {"Time": "06:00", "Predicted Price": 15.807660941197014}, {"Time": "07:00", "Predicted Price": 22.418329238280574}, {"Time": "08:00", "Predicted Price": 22.44391431713828}, {"Time": "09:00", "Predicted Price": 19.62478064423459}, {"Time": "10:00", "Predicted Price": 18.055262686010984}, {"Time": "11:00", "Predicted Price": 16.780397721952923}, {"Time": "12:00", "Predicted Price": 15.448782930820235}, {"Time": "13:00", "Predicted Price": 14.62349589903031}, {"Time": "14:00", "Predicted Price": 14.267268728825709}, {"Time": "15:00", "Predicted Price": 23.575804627295284}, {"Time": "16:00", "Predicted Price": 29.63317024773442}, {"Time": "17:00", "Predicted Price": 35.353939911495125}, {"Time": "18:00", "Predicted Price": 27.77499619391237}, {"Time": "19:00", "Predicted Price": 27.450867328943907}, {"Time": "20:00", "Predicted Price": 20.043557371070094}, {"Time": "21:00", "Predicted Price": 17.767050076735266}, {"Time": "22:00", "Predicted Price": 17.299694173931428}, {"Time": "23:00", "Predicted Price": 15.888056412504213}]}, "mark": "bar", "encoding": {"x": {"field": "Time", "type": "nominal", "axis": {"labelAngle": 0}}, "y": {"field": "Predicted Price", "type": "quantitative"}}};
+      // Embed the visualization in the container with id `vis`
+      vegaEmbed('#vis1', vlSpec1);
+      vegaEmbed('#vis2', vlSpec2);
+    </script>
+  </body>
+</html>
+
+
