@@ -5,40 +5,7 @@ import shutil
 import ep_predict
 import pandas as pd
 
-HTML ="""
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Predictions for electricity prices.</title>
-    <meta charset="utf-8" />
-
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
-
-    <style media="screen">
-      /* Add space between Vega-Embed links  */
-      .vega-actions a {{
-        margin-right: 5px;
-      }}
-    </style>
-  </head>
-  <body>
-    <h1></h1>
-    <!-- Container for the visualization -->
-    <div id="vis1"></div>
-    <div id="vis2"></div>
-    <script>
-      // Assign the specification to a local variable vlSpec.
-      var vlSpec1 = {tomorrow};
-      var vlSpec2 = {day_after_tomorrow};
-      // Embed the visualization in the container with id `vis`
-      vegaEmbed('#vis1', vlSpec1);
-      vegaEmbed('#vis2', vlSpec2);
-    </script>
-  </body>
-</html>
-"""
+HTML = open("ep_predict/template.html").read()
 
 
 def from_unixtime(unixtime):

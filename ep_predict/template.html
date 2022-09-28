@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Predictions for electricity prices.</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+
+  <style media="screen">
+    /* Add space between Vega-Embed links  */
+
+  </style>
+</head>
+
+<body>
+
+
+  <div data-target="readme-toc.content" class="Box-body px-5 pb-5">
+    <article class="markdown-body entry-content container-lg" itemprop="text">
+      <h1 dir="auto">
+          Electricity Price Prediction Demonstration</h1>
+      <h2 dir="auto"><a id="user-content-why" class="anchor" aria-hidden="true" href="#why"></a>Why?</h2>
+      <p dir="auto">Predicting electricity prices is useful if you are selling electricity to the grid.
+        Day ahead prices are sometimes provided by suppliers but predicting 2 day ahead prices can be useful if you need
+        longer lead times.</p>
+      <h2 dir="auto">How?</h2>
+      <p dir="auto">Reviewing the <a
+          href="https://reader.elsevier.com/reader/sd/pii/S0306261921004529?token=D118E0F0231D5E911794E540301B530DD09C16ED0755BC13FA6100B993CD0F904F86330471B8EE515952E1AF17A2A234&amp;originRegion=eu-west-1&amp;originCreation=20220928082105"
+          rel="nofollow">literature reviews</a> we find that the Lasso Estimated AutoRegressive (LEAR) model is one of
+        the best available.</p>
+      <h2 dir="auto">Which Data?</h2>
+      <p dir="auto">I have used a variety of datasets:</p>
+      <h3 dir="auto">National Grid ESO</h3>
+      <ul dir="auto">
+        <li><a href="https://data.nationalgrideso.com/demand/1-day-ahead-demand-forecast" rel="nofollow">Forecast
+            demand</a> (1 day ahead)</li>
+        <li><a
+            href="https://data.nationalgrideso.com/demand/7-day-ahead-national-forecast/r/7_day_ahead_demand_forecast"
+            rel="nofollow">Forecast Demand</a> (7 days ahead)</li>
+        <li><a
+            href="https://data.nationalgrideso.com/demand/day-ahead-wind-forecast/r/historic_day_ahead_wind_forecasts"
+            rel="nofollow">Wind forecast</a> (1 day ahead)</li>
+        <li><a href="https://data.nationalgrideso.com/demand/14-days-ahead-wind-forecasts" rel="nofollow">Wind
+            Forecast</a> (14 days ahead)</li>
+      </ul>
+      <p dir="auto">These datasets are correlated with the trend in electricity prices.</p>
+      <h3 dir="auto">Energy Stats UK</h3>
+
+      <p dir="auto">The price chosen is the price paid for export of solar energy in South-East England (available <a
+          href="https://www.energy-stats.uk/download-historical-pricing-data/" rel="nofollow">here</a>)</p>
+      <h2 dir="auto"></a>Results</h3>
+    </article>
+  </div>
+  <div id="vis1"></div>
+  <div id="vis2"></div>
+  <script>
+    // Assign the specification to a local variable vlSpec.
+    var vlSpec1 = {tomorrow};
+    var vlSpec2 = {day_after_tomorrow};
+    // Embed the visualization in the container with id `vis`
+    vegaEmbed('#vis1', vlSpec1);
+    vegaEmbed('#vis2', vlSpec2);
+  </script>
+</body>
+
+</html>
