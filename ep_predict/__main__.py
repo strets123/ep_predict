@@ -38,7 +38,7 @@ def fetch_train_and_test_dataset():
     return output[["Date", "price", "Demand_Forecast", "Incentive_forecast"]].dropna().sort_values(by=["Date"])
 
 
-def fetch_data_and_make_prediction():
+def filter_and_prepare_data():
     forecasts_and_prices = fetch_train_and_test_dataset()
 
     only_hourly_results = forecasts_and_prices[forecasts_and_prices["Date"].dt.minute == 0]
@@ -76,7 +76,7 @@ def output_json(df_record, name):
 
 
 def main():
-    df = fetch_data_and_make_prediction()
+    df = filter_and_prepare_data()
     prediction_date = datetime.datetime.now() 
     predictions = ep_predict.prices_predict.run(
         "octopus_agile_se_england", prediction_date

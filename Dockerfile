@@ -10,4 +10,5 @@ WORKDIR /app
 RUN echo "" > /usr/local/lib/python3.10/site-packages/epftoolbox/models/__init__.py
 COPY ep_predict /app/ep_predict
 RUN mkdir website
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN python -m ep_predict

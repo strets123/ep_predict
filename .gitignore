@@ -5,7 +5,7 @@ __pycache__/
 datasets/
 # C extensions
 *.so
-
+git_push_runner.sh
 # Distribution / packaging
 .Python
 build/
